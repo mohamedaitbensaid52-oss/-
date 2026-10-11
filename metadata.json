@@ -1,0 +1,6 @@
+{
+  "name": "أمانة — مفقودات وموجودات المدن المغربية",
+  "description": "منصة مغربية للإعلان عن الأشياء المعثور عليها في الشارع والتحقق من مواصفاتها مع أصحابها الحقيقيين بكل أمان.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
