@@ -7,6 +7,13 @@ import {
   PackageCheck
 } from 'lucide-react';
 import { FoundItem, ClaimRequest } from './types';
+import walletImg from './assets/images/found_leather_wallet_1791743482191.jpg';
+import keysImg from './assets/images/found_car_keys_1791743494206.jpg';
+import phoneImg from './assets/images/found_smartphone_1791743504846.jpg';
+import glassesImg from './assets/images/found_eyeglasses_1791743514865.jpg';
+import backpackImg from './assets/images/found_backpack_1791743525151.jpg';
+
+const STORAGE_KEY = 'amana_morocco_items_v1';
 
 const MOROCCAN_CITIES = [
   'الكل',
@@ -40,25 +47,196 @@ const CATEGORIES = [
 const PRESET_IMAGES = [
   {
     label: 'بزطام / وثائق',
-    url: '/src/assets/images/found_leather_wallet_1791743482191.jpg'
+    url: walletImg
   },
   {
     label: 'سوارت طوموبيل / دار',
-    url: '/src/assets/images/found_car_keys_1791743494206.jpg'
+    url: keysImg
   },
   {
     label: 'تيليفون / إلكترونيات',
-    url: '/src/assets/images/found_smartphone_1791743504846.jpg'
+    url: phoneImg
   },
   {
     label: 'نظاظر / أكسسوارات',
-    url: '/src/assets/images/found_eyeglasses_1791743514865.jpg'
+    url: glassesImg
   },
   {
     label: 'صاك / حقيبة',
-    url: '/src/assets/images/found_backpack_1791743525151.jpg'
+    url: backpackImg
   }
 ];
+
+const INITIAL_SEED_ITEMS: FoundItem[] = [
+  {
+    id: 'item-101',
+    type: 'found',
+    title: 'بزطام جلدي قهوي ديال الرجال',
+    category: 'بزطام ووثائق',
+    city: 'الدار البيضاء',
+    neighborhood: 'المعاريف - حدا توين سنتر',
+    dateFound: '2026-10-11',
+    publicDescription: 'لقيت هاد البزطام طايح حدا محطة الطرامواي فالمعاريف مع الصباح. فيه وراق شخصية وبطاقات بنكية ومبلغ مالي. مخبي التفاصيل باش نعرف مولاه الحقيقي.',
+    imageUrl: walletImg,
+    finderName: 'ياسين العلمي',
+    finderPhone: '0661-482910',
+    verificationQuestions: [
+      'شنو السمية والكنية اللي مكتوبة فبطاقة التعريف الوطنية (CIN)؟',
+      'أشمن بنكة ديالها البطاقة البنكية اللي لداخل وشحال تقريبا ديال الفلوس كاينين؟',
+      'كاينة واحد التصويرة صغيرة فالجيب الدخلاني، ديال من؟'
+    ],
+    status: 'verifying',
+    createdAt: '2026-10-11T08:30:00Z',
+    claims: [
+      {
+        id: 'claim-201',
+        itemId: 'item-101',
+        claimantName: 'عمر بنجلون',
+        claimantCity: 'الدار البيضاء',
+        claimantContact: '0672-991044',
+        answers: [
+          'عمر بنجلون، رقم البطاقة كيبدا بـ BK',
+          'بطاقة ديال التجاري وفا بنك وفيه تقريبا 450 درهم',
+          'تصويرة ديال الواليد الله يرحمو بالبيض والكحل'
+        ],
+        extraSpecs: 'البزطام فيه واحد الجرحة صغيرة من التحت فالقنت اليسري.',
+        status: 'pending',
+        createdAt: '2026-10-11T10:15:00Z',
+        messages: [
+          {
+            id: 'msg-1',
+            senderRole: 'claimant',
+            senderName: 'عمر بنجلون',
+            text: 'السلام خويا ياسين، الله يرحم ليك الوالدين راه البزطام طاح ليا هاد الصباح وأنا غادي للخدمة، راني جاوبت على الأسئلة كاملة.',
+            timestamp: '10:15'
+          },
+          {
+            id: 'msg-2',
+            senderRole: 'finder',
+            senderName: 'ياسين العلمي',
+            text: 'وعليكم السلام خويا عمر، المواصفات اللي عطيتي صحيحة 100%! غير أكد ليا عافاك واش كاينة شي ورقة ديال الضو ولا فاكتورة مطوية لداخل باش نكونو هانيين؟',
+            timestamp: '10:22'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'item-102',
+    type: 'found',
+    title: 'سوارت ديال الطوموبيل مع ميدالية جلدية',
+    category: 'سوارت',
+    city: 'الرباط',
+    neighborhood: 'أكدال - شارع فال ولد عمير',
+    dateFound: '2026-10-10',
+    publicDescription: 'لقيت هاد الساروت ديال الطوموبيل فوق الطبلة ديال قهوة فـ أكدال. الساروت معاه علاق نحاسي وميدالية مكتوبة فيها جملة.',
+    imageUrl: keysImg,
+    finderName: 'سلمى التازي',
+    finderPhone: '0655-821039',
+    verificationQuestions: [
+      'أشمن قهوة بالضبط فين نسيتي الساروت وفوق أشمن طبلة؟',
+      'شنو مكتوب فديك الحديدة النحاسية الصغيرة اللي مع الساروت؟',
+      'واش الساروت فيه شي ساروت آخر صغير ديال الدار ولا بوحدو؟'
+    ],
+    status: 'available',
+    createdAt: '2026-10-10T18:45:00Z',
+    claims: []
+  },
+  {
+    id: 'item-103',
+    type: 'found',
+    title: 'تيليفون آيفون بـ بوشيط خضرا (زيتي)',
+    category: 'تيليفون وإلكترونيات',
+    city: 'مراكش',
+    neighborhood: 'كيليز - حدا بلاصا بلاصا',
+    dateFound: '2026-10-11',
+    publicDescription: 'تلقى هاد التيليفون طايح فالجردة اللي حدا بلاصا فكيليز. التيليفون طافي بالشحن دبا ولكن شعلتو وعرفت الخلفية ديالو.',
+    imageUrl: phoneImg,
+    finderName: 'المهدي برادة',
+    finderPhone: '0619-330492',
+    verificationQuestions: [
+      'شنو هي التصويرة اللي داير فـ الفوند ديكران (خلفية الشاشة المسدودة)؟',
+      'أشمن شركة اتصالات ديالها لاكارت سيم (SIM) اللي فيه؟',
+      'شنو الموديل بالضبط ديال التيليفون؟'
+    ],
+    status: 'available',
+    createdAt: '2026-10-11T09:10:00Z',
+    claims: []
+  },
+  {
+    id: 'item-104',
+    type: 'found',
+    title: 'نظاظر ديال الشوف بالبوشيط ديالهم',
+    category: 'نظاظر وساعات',
+    city: 'طنجة',
+    neighborhood: 'الكورنيش - مالاباطا',
+    dateFound: '2026-10-09',
+    publicDescription: 'لقيت هاد النظاظر ديال الطبيب فالبوشيط ديالهم ديال الثوب محطوطين فوق الكرسي ديال الكورنيش.',
+    imageUrl: glassesImg,
+    finderName: 'رشيد الريسوني',
+    finderPhone: '0668-120987',
+    verificationQuestions: [
+      'شنو الماركة اللي مكتوبة لداخل فـ الرجل ديال النظاظر؟',
+      'واش كاين شي زيف ديال المسح لداخل فالبوشيط وأشمن لون؟'
+    ],
+    status: 'available',
+    createdAt: '2026-10-09T17:20:00Z',
+    claims: []
+  },
+  {
+    id: 'item-105',
+    type: 'found',
+    title: 'صاك أدو (حقيبة ظهر) كحل ديال الخدمة',
+    category: 'صيكان وحقائب',
+    city: 'فاس',
+    neighborhood: 'طريق إيموزار - حدا الجامعة',
+    dateFound: '2026-10-08',
+    publicDescription: 'لقينا هاد الصاك منسي فـ طاكسي صغير ففاس. مول الطاكسي خلاه عندي فالمحل باش إلى قلب عليه مولاه ياخذو.',
+    imageUrl: backpackImg,
+    finderName: 'الحاج عبد اللطيف',
+    finderPhone: '0662-774120',
+    verificationQuestions: [
+      'شنو الحوايج أو الدفاتر اللي كاينين لداخل فالصاك؟',
+      'شنو السمية اللي مكتوبة فـ الدفتر الكبير اللي فالجيب الوسطاني؟'
+    ],
+    status: 'returned',
+    createdAt: '2026-10-08T14:00:00Z',
+    claims: []
+  }
+];
+
+function normalizeImageUrl(url: string): string {
+  if (url.includes('found_leather_wallet')) return walletImg;
+  if (url.includes('found_car_keys')) return keysImg;
+  if (url.includes('found_smartphone')) return phoneImg;
+  if (url.includes('found_eyeglasses')) return glassesImg;
+  if (url.includes('found_backpack')) return backpackImg;
+  return url;
+}
+
+function loadLocalItems(): FoundItem[] {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed: FoundItem[] = JSON.parse(saved);
+      return parsed.map((item) => ({
+        ...item,
+        imageUrl: normalizeImageUrl(item.imageUrl)
+      }));
+    }
+  } catch {
+    // ignore storage errors
+  }
+  return INITIAL_SEED_ITEMS;
+}
+
+function saveLocalItems(items: FoundItem[]) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  } catch {
+    // ignore storage errors
+  }
+}
 
 export default function App() {
   const [items, setItems] = useState<FoundItem[]>([]);
@@ -86,9 +264,7 @@ export default function App() {
   const [postNeighborhood, setPostNeighborhood] = useState<string>('');
   const [postDate, setPostDate] = useState<string>(() => new Date().toISOString().split('T')[0]);
   const [postDescription, setPostDescription] = useState<string>('');
-  const [postImageUrl, setPostImageUrl] = useState<string>(
-    '/src/assets/images/found_leather_wallet_1791743482191.jpg'
-  );
+  const [postImageUrl, setPostImageUrl] = useState<string>(walletImg);
   const [postFinderName, setPostFinderName] = useState<string>('');
   const [postFinderPhone, setPostFinderPhone] = useState<string>('');
   const [postQuestions, setPostQuestions] = useState<string[]>([
@@ -120,12 +296,24 @@ export default function App() {
     try {
       setLoading(true);
       const res = await fetch('/api/items');
-      if (!res.ok) throw new Error('تعذر تحميل الإعلانات');
+      const contentType = res.headers.get('content-type') || '';
+      if (!res.ok || !contentType.includes('application/json')) {
+        throw new Error('use_local_fallback');
+      }
       const data: FoundItem[] = await res.json();
-      setItems(data);
+      const normalized = data.map((it) => ({
+        ...it,
+        imageUrl: normalizeImageUrl(it.imageUrl)
+      }));
+      setItems(normalized);
+      saveLocalItems(normalized);
       setError(null);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'وقع مشكل فالاتصال');
+    } catch {
+      // Seamless fallback for static hosts like Vercel
+      const localData = loadLocalItems();
+      setItems(localData);
+      saveLocalItems(localData);
+      setError(null);
     } finally {
       setLoading(false);
     }
@@ -179,29 +367,59 @@ export default function App() {
     e.preventDefault();
     if (!postTitle.trim() || !postFinderName.trim()) return;
 
+    const payload = {
+      type: postType,
+      title: postTitle.trim(),
+      category: postCategory,
+      city: postCity,
+      neighborhood: postNeighborhood.trim() || 'وسط المدينة',
+      dateFound: postDate,
+      publicDescription: postDescription.trim(),
+      imageUrl: postImageUrl,
+      finderName: postFinderName.trim(),
+      finderPhone: postFinderPhone.trim() || '0600-000000',
+      verificationQuestions: postQuestions.filter((q) => q.trim().length > 0)
+    };
+
     try {
       setSubmittingPost(true);
-      const res = await fetch('/api/items', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: postType,
-          title: postTitle,
-          category: postCategory,
-          city: postCity,
-          neighborhood: postNeighborhood || 'وسط المدينة',
-          dateFound: postDate,
-          publicDescription: postDescription,
-          imageUrl: postImageUrl,
-          finderName: postFinderName,
-          finderPhone: postFinderPhone || '0600-000000',
-          verificationQuestions: postQuestions.filter((q) => q.trim().length > 0)
-        })
-      });
+      let created: FoundItem | null = null;
 
-      if (!res.ok) throw new Error('تعذر نشر الإعلان');
-      const created: FoundItem = await res.json();
-      setItems((prev) => [created, ...prev]);
+      try {
+        const res = await fetch('/api/items', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && contentType.includes('application/json')) {
+          const apiItem: FoundItem = await res.json();
+          created = {
+            ...apiItem,
+            imageUrl: normalizeImageUrl(apiItem.imageUrl)
+          };
+        }
+      } catch {
+        // Fallback to client storage on static Vercel deployment
+      }
+
+      if (!created) {
+        created = {
+          id: `item-${Date.now()}`,
+          ...payload,
+          verificationQuestions:
+            payload.verificationQuestions.length > 0
+              ? payload.verificationQuestions
+              : ['شنو هي العلامة المميزة أو المواصفات الدقيقة ديال هاد الحاجة؟'],
+          status: 'available',
+          createdAt: new Date().toISOString(),
+          claims: []
+        };
+      }
+
+      const updatedList = [created, ...items];
+      setItems(updatedList);
+      saveLocalItems(updatedList);
       setIsPostModalOpen(false);
       setPostTitle('');
       setPostNeighborhood('');
@@ -211,8 +429,6 @@ export default function App() {
         'شنو كان لداخل بالضبط أو فين طاحت ليك؟'
       ]);
       openItemDrawer(created, 'claim');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'وقع خطأ أثناء النشر');
     } finally {
       setSubmittingPost(false);
     }
@@ -224,30 +440,77 @@ export default function App() {
 
     try {
       setSubmittingClaim(true);
-      const res = await fetch(`/api/items/${activeItem.id}/claims`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          claimantName,
+      let updatedItem: FoundItem | null = null;
+      let createdClaim: ClaimRequest | null = null;
+
+      try {
+        const res = await fetch(`/api/items/${activeItem.id}/claims`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            claimantName,
+            claimantCity: activeItem.city,
+            claimantContact: claimantPhone,
+            answers: claimAnswers,
+            extraSpecs: claimExtraSpecs
+          })
+        });
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && contentType.includes('application/json')) {
+          const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
+          updatedItem = {
+            ...data.item,
+            imageUrl: normalizeImageUrl(data.item.imageUrl)
+          };
+          createdClaim = data.claim;
+        }
+      } catch {
+        // Static fallback
+      }
+
+      if (!updatedItem || !createdClaim) {
+        createdClaim = {
+          id: `claim-${Date.now()}`,
+          itemId: activeItem.id,
+          claimantName: claimantName.trim(),
           claimantCity: activeItem.city,
-          claimantContact: claimantPhone,
+          claimantContact: claimantPhone.trim(),
           answers: claimAnswers,
-          extraSpecs: claimExtraSpecs
-        })
-      });
+          extraSpecs: claimExtraSpecs.trim(),
+          status: 'pending',
+          createdAt: new Date().toISOString(),
+          messages: [
+            {
+              id: `msg-${Date.now()}`,
+              senderRole: 'claimant',
+              senderName: claimantName.trim(),
+              text: claimExtraSpecs.trim()
+                ? `السلام عليكم، هادي راها ديالي. جاوبت على الأسئلة ديال المواصفات، وهادي تفاصيل إضافية: ${claimExtraSpecs.trim()}`
+                : 'السلام عليكم، هادي راها ديالي وراني جاوبت على الأسئلة ديال المواصفات باش تتأكد.',
+              timestamp: new Date().toLocaleTimeString('ar-MA', {
+                hour: '2-digit',
+                minute: '2-digit'
+              })
+            }
+          ]
+        };
 
-      if (!res.ok) throw new Error('تعذر إرسال طلب التحقق');
-      const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
+        updatedItem = {
+          ...activeItem,
+          status: activeItem.status === 'available' ? 'verifying' : activeItem.status,
+          claims: [createdClaim, ...activeItem.claims]
+        };
+      }
 
-      setItems((prev) => prev.map((it) => (it.id === data.item.id ? data.item : it)));
-      setActiveItem(data.item);
-      setSelectedClaimId(data.claim.id);
+      const nextItems = items.map((it) => (it.id === updatedItem!.id ? updatedItem! : it));
+      setItems(nextItems);
+      saveLocalItems(nextItems);
+      setActiveItem(updatedItem);
+      setSelectedClaimId(createdClaim.id);
       setActiveTabInDrawer('verify_chat');
       setClaimSuccessBanner('تم إرسال الأجوبة ديالك على المواصفات! تقدر دابا تزيد تهضر فالشات باش تأكد ليه التفاصيل.');
       setClaimantName('');
       setClaimantPhone('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'وقع مشكل فإرسال الطلب');
     } finally {
       setSubmittingClaim(false);
     }
@@ -262,23 +525,55 @@ export default function App() {
 
     try {
       setSendingMessage(true);
-      const res = await fetch(`/api/items/${activeItem.id}/claims/${selectedClaimId}/messages`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      let updatedItem: FoundItem | null = null;
+
+      try {
+        const res = await fetch(`/api/items/${activeItem.id}/claims/${selectedClaimId}/messages`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            senderRole: roleView,
+            senderName: roleView === 'finder' ? activeItem.finderName : currentClaim.claimantName,
+            text: chatInput
+          })
+        });
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && contentType.includes('application/json')) {
+          const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
+          updatedItem = {
+            ...data.item,
+            imageUrl: normalizeImageUrl(data.item.imageUrl)
+          };
+        }
+      } catch {
+        // Static fallback
+      }
+
+      if (!updatedItem) {
+        const newMsg = {
+          id: `msg-${Date.now()}`,
           senderRole: roleView,
           senderName: roleView === 'finder' ? activeItem.finderName : currentClaim.claimantName,
-          text: chatInput
-        })
-      });
+          text: chatInput.trim(),
+          timestamp: new Date().toLocaleTimeString('ar-MA', {
+            hour: '2-digit',
+            minute: '2-digit'
+          })
+        };
 
-      if (!res.ok) throw new Error('تعذر إرسال الرسالة');
-      const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
-      setItems((prev) => prev.map((it) => (it.id === data.item.id ? data.item : it)));
-      setActiveItem(data.item);
+        updatedItem = {
+          ...activeItem,
+          claims: activeItem.claims.map((c) =>
+            c.id === selectedClaimId ? { ...c, messages: [...c.messages, newMsg] } : c
+          )
+        };
+      }
+
+      const nextItems = items.map((it) => (it.id === updatedItem!.id ? updatedItem! : it));
+      setItems(nextItems);
+      saveLocalItems(nextItems);
+      setActiveItem(updatedItem);
       setChatInput('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'تعذر إرسال الرسالة');
     } finally {
       setSendingMessage(false);
     }
@@ -286,19 +581,58 @@ export default function App() {
 
   async function handleUpdateClaimStatus(claimId: string, status: 'approved' | 'rejected') {
     if (!activeItem) return;
+
+    let updatedItem: FoundItem | null = null;
+
     try {
       const res = await fetch(`/api/items/${activeItem.id}/claims/${claimId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
       });
-      if (!res.ok) throw new Error('تعذر تحديث الحالة');
-      const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
-      setItems((prev) => prev.map((it) => (it.id === data.item.id ? data.item : it)));
-      setActiveItem(data.item);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'وقع خطأ');
+      const contentType = res.headers.get('content-type') || '';
+      if (res.ok && contentType.includes('application/json')) {
+        const data: { item: FoundItem; claim: ClaimRequest } = await res.json();
+        updatedItem = {
+          ...data.item,
+          imageUrl: normalizeImageUrl(data.item.imageUrl)
+        };
+      }
+    } catch {
+      // Static fallback
     }
+
+    if (!updatedItem) {
+      updatedItem = {
+        ...activeItem,
+        status: status === 'approved' ? 'returned' : activeItem.status,
+        claims: activeItem.claims.map((c) => {
+          if (c.id !== claimId) return c;
+          const updatedMessages =
+            status === 'approved'
+              ? [
+                  ...c.messages,
+                  {
+                    id: `msg-${Date.now()}`,
+                    senderRole: 'finder' as const,
+                    senderName: activeItem.finderName,
+                    text: `تم التأكد من المواصفات بنجاح! مرحبا خويا/ختي ${c.claimantName}، تقدر تعيط ليا فـ ${activeItem.finderPhone} باش نتلاقاو ونسلمك الأمانة ديالك.`,
+                    timestamp: new Date().toLocaleTimeString('ar-MA', {
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })
+                  }
+                ]
+              : c.messages;
+          return { ...c, status, messages: updatedMessages };
+        })
+      };
+    }
+
+    const nextItems = items.map((it) => (it.id === updatedItem!.id ? updatedItem! : it));
+    setItems(nextItems);
+    saveLocalItems(nextItems);
+    setActiveItem(updatedItem);
   }
 
   function handleCustomImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -1370,7 +1704,7 @@ export default function App() {
                 <div className="flex items-center gap-2 overflow-x-auto pb-1">
                   {PRESET_IMAGES.map((preset) => (
                     <button
-                      key={preset.url}
+                      key={preset.label}
                       type="button"
                       onClick={() => setPostImageUrl(preset.url)}
                       className={`px-3 py-1.5 text-xs rounded-lg border whitespace-nowrap shrink-0 cursor-pointer ${
